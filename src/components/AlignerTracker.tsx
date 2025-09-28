@@ -129,7 +129,7 @@ export default function AlignerTracker() {
         const remainingDays = differenceInDays(appointmentDate, fromDate);
         const daysPerRemaining = remainingDays / futureAligners.length;
 
-        let updatedAligners = [...baseAligners];
+        const updatedAligners = [...baseAligners];
         for (let i = 0; i < futureAligners.length; i++) {
             const alignerIndex = fromIndex + 1 + i;
             updatedAligners[alignerIndex].projectedChangeDate = addDays(fromDate, (i + 1) * daysPerRemaining);

@@ -157,17 +157,18 @@ export default function AlignerTracker() {
     };
 
     const handleConfirmChange = (id: number) => {
-        let updatedAligners = [...aligners];
-        const changedAlignerIndex = updatedAligners.findIndex(a => a.id === id);
+        const changedAlignerIndex = aligners.findIndex(a => a.id === id);
         if (changedAlignerIndex === -1) return;
 
+        const updatedAligners = [...aligners];
         updatedAligners[changedAlignerIndex].actualChangeDate = new Date();
-        updatedAligners = recalculateFutureAligners(updatedAligners, changedAlignerIndex, new Date());
-        setAligners(updatedAligners);
+
+        const finalAligners = recalculateFutureAligners(updatedAligners, changedAlignerIndex, new Date());
+        setAligners(finalAligners);
     };
 
     const handleDateEdit = (id: number, newDateStr: string) => {
-        let updatedAligners = [...aligners];
+        const updatedAligners = [...aligners];
         const editedAlignerIndex = updatedAligners.findIndex(a => a.id === id);
         if (editedAlignerIndex === -1) return;
 
